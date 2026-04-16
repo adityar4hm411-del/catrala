@@ -17,7 +17,21 @@ color: white;
 text-shadow: 2px 2px 5px black;
 font-family: Arial, sans-serif;
 ">
+<audio id="bgMusic" loop hidden>
+  <source src="rumah_hindia.mp3" type="audio/mpeg">
+</audio>
 
+<script>
+  const audio = document.getElementById("bgMusic");
+
+  function playMusic() {
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+    document.removeEventListener("click", playMusic);
+  }
+
+  document.addEventListener("click", playMusic);
+</script>
 <h1>Gallery Catra & Lala</h1>
 Kenapa sih, catra buat gallery ini??
 <p>Yaa... biar kamu bisa simpan dan lihat iniii, kan kamu suka reset hp wwkwkwk.</p>
