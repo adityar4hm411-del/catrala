@@ -2,177 +2,286 @@
 <html>
 <head>
 <title>Gallery</title>
+
+<style>
+body {
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  font-family: Arial, sans-serif;
+
+  background-image: 
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('background2.jpeg');
+  background-size: 250px;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+/* =========================
+   FEED FOTO (IG STYLE)
+   ========================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+.gallery img:hover {
+  opacity: 0.8;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* =========================
+   TEXT SECTION
+   ========================= */
+.text-box {
+  padding: 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* =========================
+   VIDEO GRID (RAPI)
+   ========================= */
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.video-container video {
+  width: 300px;
+  border-radius: 10px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+/* =========================
+   MODAL
+   ========================= */
+#imageModal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  text-align: center;
+}
+
+#modalImage {
+  max-width: 90%;
+  max-height: 90%;
+  margin-top: 40px;
+}
+
+#closeModal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  cursor: pointer;
+}
+</style>
 </head>
-<body style="
-background-image: 
-linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-url('background2.jpeg');
 
-background-size: 250px;
-background-repeat: repeat;
-background-position: center;
+<body>
 
-margin: 0;
-color: white;
-text-shadow: 2px 2px 5px black;
-font-family: Arial, sans-serif;
-">
 <audio id="bgMusic" loop hidden>
   <source src="rumah_hindia.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  const audio = document.getElementById("bgMusic");
-
-  function playMusic() {
-    audio.volume = 0.3;
-    audio.play().catch(() => {});
-    document.removeEventListener("click", playMusic);
-  }
-
-  document.addEventListener("click", playMusic);
+const audio = document.getElementById("bgMusic");
+document.addEventListener("click", function playOnce() {
+  audio.volume = 0.3;
+  audio.play().catch(()=>{});
+  document.removeEventListener("click", playOnce);
+});
 </script>
-<h1>Gallery Catra & Lala</h1>
-<h3></h3>Kenapa sih, catra buat gallery ini??
-<p>Yaa... biar kamu bisa simpan dan lihat iniii, kan kamu suka reset hp wwkwkwk.</h3></p>
-<h2>potrait</h2>
-  <p>
-<img src="foto1.jpeg" width="200">
-<img src="foto3.jpeg" width="200">
-<img src="foto5.jpeg" width="200">
-<img src="foto6.jpeg" width="200">
-<img src="foto7.jpeg" width="200">
-<img src="WhatsApp Image 2026-04-01 at 21.41.56.jpeg" width="200">
-<img src="WhatsApp Image 2026-04-01 at 21.41.57.jpg.jpeg" width="200">
-<img src="foto8.jpeg" width="200">
-<img src="foto9.jpeg" width="200">
-<img src="foto10.jpeg" width="200">
-<img src="foto11.jpeg" width="200">
-<img src="foto12.jpeg" width="200">
-<img src="foto13.jpeg" width="200">
-<img src="foto14.jpeg" width="200">
-<img src="foto15.jpeg" width="200">
-<img src="foto16.jpeg" width="200">
-<img src="foto17.jpeg" width="200">
-<img src="foto18.jpeg" width="200">
-<img src="foto19.jpeg" width="200">
-<img src="foto20.jpeg" width="200">
-<img src="foto21.jpeg" width="200">
-<img src="foto22.jpeg" width="200">
-<img src="foto23.jpeg" width="200">
-<img src="foto24.jpeg" width="200">
-<img src="foto25.jpeg" width="200">
-<img src="foto26.jpeg" width="200">
-<img src="foto27.jpeg" width="200">
-<img src="foto28.jpeg" width="200">
-<img src="foto29.jpeg" width="200">
-<img src="foto30.jpeg" width="200">
-<img src="foto31.jpeg" width="200">
-<img src="foto32.jpeg" width="200">
-<img src="foto33.jpeg" width="200">
-<img src="foto34.jpeg" width="200">
-<img src="foto35.jpeg" width="200">
-<img src="foto36.jpeg" width="200">
-<img src="foto37.jpeg" width="200">
-<img src="foto38.jpeg" width="200">
-<img src="foto39.jpeg" width="200">
-<img src="foto40.jpeg" width="200">
-<img src="foto41.jpeg" width="200">
-<img src="foto42.jpeg" width="200">
-<img src="foto43.jpeg" width="200">
-<img src="foto44.jpeg" width="200">
-<img src="foto45.jpeg" width="200">
-<img src="foto46.jpeg" width="200">
-<img src="foto47.jpeg" width="200">
-<img src="foto48.jpeg" width="200">
-<img src="foto49.jpeg" width="200">
-<img src="foto50.jpeg" width="200">
-<img src="foto51.jpeg" width="200">
-<img src="foto52.jpeg" width="200">
-<img src="foto53.jpeg" width="200">
-<img src="foto54.jpeg" width="200">
-<img src="foto55.jpeg" width="200">
-<img src="foto56.jpeg" width="200">
-<img src="foto57.jpeg" width="200">
-<img src="foto58.jpeg" width="200">
-    <img src="foto59.jpeg" width="200">
-<img src="foto60.jpeg" width="200">
-<img src="foto61.jpeg" width="200">
-<img src="foto62.jpeg" width="200">
-<img src="foto63.jpeg" width="200">
-</p>
-<p>
-<h2>lanscape</h2>
-</p>
-<p><img src="foto2.jpeg" width="200">
-<img src="foto4.jpeg" width="200">
-<img src="lfoto1.jpeg" width="200">
-<img src="lfoto2.jpeg" width="200">
-<img src="lfoto3.jpeg" width="200">
-<img src="lfoto4.jpeg" width="200">
-  <img src="lfoto5.jpeg" width="200">
 
-</p>
-  
-  <i><b><h3>"Kau datang saat gelapku merekah </p>
-<p>Seluruh hatiku untukmu lala</p>
-<p>Kau pantas dapatkan yang baik di dunia</p>
-<p></p>Smoga kita bertahan lama"</h3>
-</b></i></p>
+<!-- HEADER -->
+<div class="header">
+  <h1>Gallery Catra & Lala</h1>
+  <p>Kenapa sih catra buat gallery ini?</p>
+  <p>Biar kamu bisa simpan dan lihat lagi 🤍</p>
+</div>
 
-<h2>video</h2>
-<video width="320" height="240" controls>
-  <source src="video1.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video2.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video3.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video4.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video5.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video6.mp4" type="video/mp4">
-</video>
-  
-<video width="320" height="240" controls>
-  <source src="video7.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video8.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video9.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video10.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video11.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video12.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video13.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video14.mp4" type="video/mp4">
-</video>
-<video width="320" height="240" controls>
-  <source src="video15.mp4" type="video/mp4">
-</video>
-  <video width="320" height="240" controls>
-    <source src="video16.mp4" type="video/mp4">
-</video>
-  <video width="320" height="240" controls>
-    <source src="video17.mp4" type="video/mp4">
-</video>
-<a href="adit.html" style="color: white;"><h2>Back to menu</h2></a>
+<!-- FOTO (SEMUA TETAP) -->
+<div class="gallery">
+<img src="foto1.jpeg">
+<img src="foto3.jpeg">
+<img src="foto5.jpeg">
+<img src="foto6.jpeg">
+<img src="foto7.jpeg">
+<img src="WhatsApp Image 2026-04-01 at 21.41.56.jpeg">
+<img src="WhatsApp Image 2026-04-01 at 21.41.57.jpg.jpeg">
+
+<!-- lanjut semua foto kamu -->
+<img src="foto8.jpeg">
+<img src="foto9.jpeg">
+<img src="foto10.jpeg">
+<img src="foto11.jpeg">
+<img src="foto12.jpeg">
+<img src="foto13.jpeg">
+<img src="foto14.jpeg">
+<img src="foto15.jpeg">
+<img src="foto16.jpeg">
+<img src="foto17.jpeg">
+<img src="foto18.jpeg">
+<img src="foto19.jpeg">
+<img src="foto20.jpeg">
+<img src="foto21.jpeg">
+<img src="foto22.jpeg">
+<img src="foto23.jpeg">
+<img src="foto24.jpeg">
+<img src="foto25.jpeg">
+<img src="foto26.jpeg">
+<img src="foto27.jpeg">
+<img src="foto28.jpeg">
+<img src="foto29.jpeg">
+<img src="foto30.jpeg">
+<img src="foto31.jpeg">
+<img src="foto32.jpeg">
+<img src="foto33.jpeg">
+<img src="foto34.jpeg">
+<img src="foto35.jpeg">
+<img src="foto36.jpeg">
+<img src="foto37.jpeg">
+<img src="foto38.jpeg">
+<img src="foto39.jpeg">
+<img src="foto40.jpeg">
+<img src="foto41.jpeg">
+<img src="foto42.jpeg">
+<img src="foto43.jpeg">
+<img src="foto44.jpeg">
+<img src="foto45.jpeg">
+<img src="foto46.jpeg">
+<img src="foto47.jpeg">
+<img src="foto48.jpeg">
+<img src="foto49.jpeg">
+<img src="foto50.jpeg">
+<img src="foto51.jpeg">
+<img src="foto52.jpeg">
+<img src="foto53.jpeg">
+<img src="foto54.jpeg">
+<img src="foto55.jpeg">
+<img src="foto56.jpeg">
+<img src="foto57.jpeg">
+<img src="foto58.jpeg">
+<img src="foto59.jpeg">
+<img src="foto60.jpeg">
+<img src="foto61.jpeg">
+<img src="foto62.jpeg">
+<img src="foto63.jpeg">
+
+<!-- landscape tetap masuk grid -->
+<img src="foto2.jpeg">
+<img src="foto4.jpeg">
+<img src="lfoto1.jpeg">
+<img src="lfoto2.jpeg">
+<img src="lfoto3.jpeg">
+<img src="lfoto4.jpeg">
+<img src="lfoto5.jpeg">
+</div>
+
+<!-- TEKS -->
+<div class="text-box">
+  <h3>
+    "Kau datang saat gelapku merekah <br>
+    Seluruh hatiku untukmu lala <br>
+    Kau pantas dapatkan yang baik di dunia <br>
+    Semoga kita bertahan lama 🤍"
+  </h3>
+</div>
+
+<!-- VIDEO -->
+<div class="video-container">
+<video controls><source src="video1.mp4"></video>
+<video controls><source src="video2.mp4"></video>
+<video controls><source src="video3.mp4"></video>
+<video controls><source src="video4.mp4"></video>
+<video controls><source src="video5.mp4"></video>
+<video controls><source src="video6.mp4"></video>
+<video controls><source src="video7.mp4"></video>
+<video controls><source src="video8.mp4"></video>
+<video controls><source src="video9.mp4"></video>
+<video controls><source src="video10.mp4"></video>
+<video controls><source src="video11.mp4"></video>
+<video controls><source src="video12.mp4"></video>
+<video controls><source src="video13.mp4"></video>
+<video controls><source src="video14.mp4"></video>
+<video controls><source src="video15.mp4"></video>
+<video controls><source src="video16.mp4"></video>
+<video controls><source src="video17.mp4"></video>
+</div>
+
+<div style="text-align:center;">
+  <a href="adit.html" style="color:white;"><h2>Back to menu</h2></a>
+</div>
+
+<!-- MODAL -->
+<div id="imageModal">
+  <span id="closeModal">&times;</span>
+  <img id="modalImage">
+</div>
+
+<script>
+// FADE
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("fade-in");
+  });
+});
+document.querySelectorAll("img, video").forEach(el => observer.observe(el));
+
+// MODAL
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+
+document.querySelectorAll(".gallery img").forEach(img => {
+  img.onclick = () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  };
+});
+
+document.getElementById("closeModal").onclick = () => modal.style.display = "none";
+modal.onclick = (e) => {
+  if (e.target === modal) modal.style.display = "none";
+};
+</script>
+
 </body>
 </html>
