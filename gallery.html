@@ -9,6 +9,7 @@ body {
   color: white;
   text-shadow: 2px 2px 5px black;
   font-family: Arial, sans-serif;
+  line-height: 1.6;
 
   background-image: 
   linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
@@ -19,15 +20,29 @@ body {
 }
 
 /* =========================
-   HEADER
+   RESPONSIVE TEXT
    ========================= */
-.header {
+h1 {
+  font-size: clamp(20px, 5vw, 36px);
   text-align: center;
-  padding: 20px;
+}
+
+h2 {
+  font-size: clamp(16px, 4vw, 28px);
+  text-align: center;
+}
+
+h3 {
+  font-size: clamp(14px, 3.5vw, 22px);
+}
+
+p {
+  font-size: clamp(13px, 3vw, 18px);
+  text-align: center;
 }
 
 /* =========================
-   FEED FOTO (IG STYLE)
+   GALLERY IG STYLE
    ========================= */
 .gallery {
   display: grid;
@@ -57,16 +72,7 @@ body {
 }
 
 /* =========================
-   TEXT SECTION
-   ========================= */
-.text-box {
-  padding: 20px;
-  text-align: center;
-  line-height: 1.6;
-}
-
-/* =========================
-   VIDEO GRID (RAPI)
+   VIDEO
    ========================= */
 .video-container {
   display: flex;
@@ -106,14 +112,18 @@ body {
   margin-top: 40px;
 }
 
+/* tombol X */
 #closeModal {
   position: absolute;
   top: 20px;
-  right: 30px;
-  font-size: 40px;
+  right: 20px;
+  font-size: clamp(24px, 6vw, 40px);
+  color: white;
   cursor: pointer;
+  padding: 10px;
 }
 </style>
+
 </head>
 
 <body>
@@ -131,14 +141,12 @@ document.addEventListener("click", function playOnce() {
 });
 </script>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>Gallery Catra & Lala</h1>
-  <p>Kenapa sih catra buat gallery ini?</p>
-  <p>Biar kamu bisa simpan dan lihat lagi 🤍</p>
-</div>
+<h1>Gallery Catra & Lala</h1>
 
-<!-- FOTO (SEMUA TETAP) -->
+<p>Kenapa sih catra buat gallery ini?</p>
+<p>Biar kamu bisa simpan dan lihat lagi 🤍</p>
+
+<!-- FOTO -->
 <div class="gallery">
 <img src="foto1.jpeg">
 <img src="foto3.jpeg">
@@ -148,7 +156,7 @@ document.addEventListener("click", function playOnce() {
 <img src="WhatsApp Image 2026-04-01 at 21.41.56.jpeg">
 <img src="WhatsApp Image 2026-04-01 at 21.41.57.jpg.jpeg">
 
-<!-- lanjut semua foto kamu -->
+<!-- lanjutkan semua foto kamu -->
 <img src="foto8.jpeg">
 <img src="foto9.jpeg">
 <img src="foto10.jpeg">
@@ -206,7 +214,6 @@ document.addEventListener("click", function playOnce() {
 <img src="foto62.jpeg">
 <img src="foto63.jpeg">
 
-<!-- landscape tetap masuk grid -->
 <img src="foto2.jpeg">
 <img src="foto4.jpeg">
 <img src="lfoto1.jpeg">
@@ -217,14 +224,12 @@ document.addEventListener("click", function playOnce() {
 </div>
 
 <!-- TEKS -->
-<div class="text-box">
-  <h3>
-    "Kau datang saat gelapku merekah <br>
-    Seluruh hatiku untukmu lala <br>
-    Kau pantas dapatkan yang baik di dunia <br>
-    Semoga kita bertahan lama 🤍"
-  </h3>
-</div>
+<h3 style="text-align:center; padding:20px;">
+"Kau datang saat gelapku merekah <br>
+Seluruh hatiku untukmu lala <br>
+Kau pantas dapatkan yang baik di dunia <br>
+Semoga kita bertahan lama 🤍"
+</h3>
 
 <!-- VIDEO -->
 <div class="video-container">
@@ -248,7 +253,7 @@ document.addEventListener("click", function playOnce() {
 </div>
 
 <div style="text-align:center;">
-  <a href="adit.html" style="color:white;"><h2>Back to menu</h2></a>
+<a href="adit.html"><h2>Back to menu</h2></a>
 </div>
 
 <!-- MODAL -->
@@ -258,12 +263,17 @@ document.addEventListener("click", function playOnce() {
 </div>
 
 <script>
-// FADE
+// FADE (repeat)
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("fade-in");
+    if (e.isIntersecting) {
+      e.target.classList.add("fade-in");
+    } else {
+      e.target.classList.remove("fade-in");
+    }
   });
 });
+
 document.querySelectorAll("img, video").forEach(el => observer.observe(el));
 
 // MODAL
@@ -278,6 +288,7 @@ document.querySelectorAll(".gallery img").forEach(img => {
 });
 
 document.getElementById("closeModal").onclick = () => modal.style.display = "none";
+
 modal.onclick = (e) => {
   if (e.target === modal) modal.style.display = "none";
 };
